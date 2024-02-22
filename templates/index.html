@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Cricket Score Predictor</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Cricket Score Predictor</h1>
+        <form action="/predict" method="post">
+            <label for="current_runs">Current Runs:</label>
+            <input type="text" name="current_runs" required><br>
+
+            <label for="wickets">Wickets:</label>
+            <input type="text" name="wickets" required><br>
+
+            <label for="overs">Overs:</label>
+            <input type="text" name="overs" required><br>
+
+            <label for="striker_runs">Striker Runs:</label>
+            <input type="text" name="striker_runs" required><br>
+
+            <label for="non_striker_runs">Non Striker Runs:</label>
+            <input type="text" name="non_striker_runs" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <p class="result">Predicted Score: {{ prediction }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
